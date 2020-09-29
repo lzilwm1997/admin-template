@@ -47,12 +47,14 @@ export const constantRoutes = [
     path: '/',
     component: Layout,
     redirect: '/dashboard',
-    children: [{
-      path: 'dashboard',
-      name: 'Dashboard',
-      component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
-    }]
+    children: [
+      {
+        path: 'dashboard',
+        name: 'Dashboard',
+        component: () => import('@/views/dashboard/index'),
+        meta: { title: '首页', icon: 'dashboard' }
+      }
+    ]
   },
 
   {
@@ -147,15 +149,38 @@ export const constantRoutes = [
         meta: { title: 'menu2' }
       }
     ]
-  },
+  }
+]
 
+/**
+ * asyncRoutes
+ * the routes that need to be dynamically loaded based on user roles
+ */
+export const asyncRoutes = [
   {
-    path: 'external-link',
+    path: '/test',
     component: Layout,
+    redirect: '/test/all',
+    meta: {
+      title: '异步测试',
+      icon: 'lock',
+      roles: ['admin', 'editor'] // you can set roles in root nav
+    },
     children: [
       {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
+        path: 'all',
+        component: () => import('@/views/test/all'),
+        meta: { title: 'all', icon: 'edit', roles: ['admin', 'editor'] }
+      },
+      {
+        path: 'editor',
+        component: () => import('@/views/test/editor'),
+        meta: { title: 'editor', icon: 'edit', roles: ['editor'] }
+      },
+      {
+        path: 'admin',
+        component: () => import('@/views/test/admin'),
+        meta: { title: 'admin', icon: 'list', roles: ['admin'] }
       }
     ]
   },
@@ -164,11 +189,12 @@ export const constantRoutes = [
   { path: '*', redirect: '/404', hidden: true }
 ]
 
-const createRouter = () => new Router({
-  // mode: 'history', // require service support
-  scrollBehavior: () => ({ y: 0 }),
-  routes: constantRoutes
-})
+const createRouter = () =>
+  new Router({
+    // mode: 'history', // require service support
+    scrollBehavior: () => ({ y: 0 }),
+    routes: constantRoutes
+  })
 
 const router = createRouter()
 

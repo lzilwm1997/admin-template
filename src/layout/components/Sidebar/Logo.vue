@@ -19,12 +19,12 @@ export default {
   props: {
     collapse: {
       type: Boolean,
-      required: true
+      required: false
     }
   },
   data() {
     return {
-      title: 'Vue Admin Template',
+      title: '贵州遵义天逸轩',
       logo: 'https://wpimg.wallstcn.com/69a1c46c-eb1c-4b46-8bd4-e9e686ef5251.png'
     }
   }
