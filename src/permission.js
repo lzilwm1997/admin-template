@@ -40,12 +40,10 @@ router.beforeEach(async(to, from, next) => {
 
           const accessRoutes = await store.dispatch('permission/generateRoutes', roles)
 
+          // 添加动态路由
           router.addRoutes(accessRoutes)
 
-          console.log(router)
-
-          // hack method to ensure that addRoutes is complete
-          // set the replace: true, so the navigation will not leave a history record
+          // 设置replace: true，这样导航将不会留下历史记录
           next({ ...to, replace: true })
         } catch (error) {
           // remove token and go to login page to re-login
