@@ -33,7 +33,6 @@ module.exports = [
     type: 'get',
     response: config => {
       const { importance, type, title, page = 1, limit = 20, sort } = config.query
-      
       let mockList = List.filter(item => {
         if (importance && item.importance !== +importance) return false
         if (type && item.type !== type) return false
@@ -46,7 +45,6 @@ module.exports = [
       }
 
       const pageList = mockList.filter((item, index) => index < limit * page && index >= limit * (page - 1))
-     
       return {
         code: 20000,
         data: {
