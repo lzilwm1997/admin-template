@@ -36,6 +36,18 @@ const tableRouter = {
       component: () => import('@/views/table/complex-table'),
       name: 'ComplexTable',
       meta: { title: '导出excle表格' }
+    },
+    {
+      path: 'tinymce',
+      component: () => import('@/views/table/tinymce'),
+      name: 'Tinymce',
+      meta: { title: '富文本编辑器' }
+    },
+    {
+      path: 'dropzone',
+      component: () => import('@/views/table/dropzone'),
+      name: 'Dropzone',
+      meta: { title: '文件拖拽上传' }
     }
   ]
 }
