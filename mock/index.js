@@ -5,7 +5,6 @@ const user = require('./user')
 const table = require('./table')
 const article = require('./article')
 
-
 const mocks = [
   ...user,
   ...table,
