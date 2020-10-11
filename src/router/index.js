@@ -31,6 +31,7 @@ import tableRouter from './modules/table'
  * all roles can be accessed
  */
 export const constantRoutes = [
+
   {
     path: '/login',
     component: () => import('@/views/login/index'),
@@ -95,6 +96,32 @@ export const constantRoutes = [
         name: 'Form',
         component: () => import('@/views/form/index'),
         meta: { title: '表单', icon: 'form' }
+      }
+    ]
+  },
+
+  {
+    path: '/dropzone',
+    component: Layout,
+    children: [
+      {
+        path: 'upload',
+        name: 'Dropzone',
+        component: () => import('@/views/dropzone/index'),
+        meta: { title: '文件上传', icon: 'form' }
+      }
+    ]
+  },
+
+  {
+    path: '/tinymce',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'TinymceEdit',
+        component: () => import('@/views/tinymce/index'),
+        meta: { title: '富文本编辑器', icon: 'form' }
       }
     ]
   },
