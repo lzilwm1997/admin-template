@@ -38,6 +38,12 @@ export const constantRoutes = [
   },
 
   {
+    path: '/forget',
+    component: () => import('@/views/login/forget/index'),
+    hidden: true
+  },
+
+  {
     path: '/404',
     component: () => import('@/views/404'),
     hidden: true
@@ -53,6 +59,19 @@ export const constantRoutes = [
         name: 'Dashboard',
         component: () => import('@/views/dashboard/index'),
         meta: { title: '首页', icon: 'dashboard' }
+      }
+    ]
+  },
+
+  {
+    path: '/person',
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: 'center',
+        name: 'Center',
+        component: () => import('@/views/person/index')
       }
     ]
   },

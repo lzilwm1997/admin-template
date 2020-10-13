@@ -6,6 +6,11 @@
   }
 }
 
+@mixin autoInner() {
+  width: 90%;
+  margin: 0 auto;
+}
+
 @mixin scrollBar {
   &::-webkit-scrollbar-track-piece {
     background: #d3dce6;
